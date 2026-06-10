@@ -1,0 +1,19 @@
+{
+  "name": "@rallypoint/shared",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "exports": {
+    "./geo": "./src/geo.ts",
+    "./protocol": "./src/protocol.ts"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.8"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "RallyPoint",
+  "short_name": "RallyPoint",
+  "description": "Gather. Explore. Rally. Form a group by standing together; rally everyone back with one tap.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#194650",
+  "background_color": "#04434f",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

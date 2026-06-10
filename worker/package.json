@@ -1,0 +1,23 @@
+{
+  "name": "@rallypoint/worker",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "types": "wrangler types"
+  },
+  "dependencies": {
+    "@block65/webcrypto-web-push": "^1.0.2",
+    "@rallypoint/shared": "workspace:*",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260610.1",
+    "typescript": "^5.9.0",
+    "vitest": "^4.1.8",
+    "wrangler": "^4.99.0"
+  }
+}

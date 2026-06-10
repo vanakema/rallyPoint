@@ -1,0 +1,43 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rallypoint",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-05-01",
+  "observability": { "enabled": true },
+
+  // Live at the custom domain (Cloudflare-managed zone) and the
+  // workers.dev URL as a fallback.
+  "routes": [
+    { "pattern": "rallypoint.markvanaken.com", "custom_domain": true }
+  ],
+  "workers_dev": true,
+
+  // The built PWA. Assets are served directly from Cloudflare's edge cache
+  // (free and unmetered); only /api/* and /ws/* invoke the worker.
+  "assets": {
+    "directory": "../app/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/ws/*"]
+  },
+
+  "durable_objects": {
+    "bindings": [
+      { "name": "MATCHMAKER", "class_name": "MatchmakerDO" },
+      { "name": "GROUP", "class_name": "GroupDO" }
+    ]
+  },
+
+  // SQLite-backed classes — required for Durable Objects on the free plan.
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["MatchmakerDO", "GroupDO"] }
+  ],
+
+  // Non-secret config. AUTH_SECRET and VAPID_PRIVATE_KEY are secrets:
+  //   wrangler secret put AUTH_SECRET / VAPID_PRIVATE_KEY
+  // (locally: .dev.vars — see .dev.vars.example)
+  "vars": {
+    "VAPID_PUBLIC_KEY": "BNxZRfJrMuz5LP1H-pxHLoN2DTIDTLAXLXH9nhfW0BkzQvVv56Em499emAMHWfnYP_VcXhi_nbEyFG7FLZUi1IM",
+    "VAPID_SUBJECT": "mailto:mark.vanaken@gmail.com"
+  }
+}
