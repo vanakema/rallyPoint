@@ -1,7 +1,0 @@
-{
-  "apn-dev": {
-    "passphrase": "rallyPoint",
-    "key": "key.pem",
-    "cert": "cert.pem"
-  }
-}

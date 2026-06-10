@@ -1,0 +1,30 @@
+{
+  "name": "rallypoint",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Gather. Explore. Rally. Real-time group meetup PWA.",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --filter @rallypoint/app build",
+    "dev": "pnpm --filter @rallypoint/app build && pnpm --filter @rallypoint/worker dev",
+    "test": "pnpm -r test",
+    "test:integration": "node tests/integration.mjs",
+    "deploy": "pnpm --filter @rallypoint/app build && pnpm --filter @rallypoint/worker deploy",
+    "icons": "node scripts/generate-icons.mjs",
+    "vapid": "node scripts/generate-vapid-keys.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0",
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.0",
+    "ws": "^8.21.0"
+  },
+  "packageManager": "pnpm@10.0.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "workerd"
+    ]
+  }
+}
